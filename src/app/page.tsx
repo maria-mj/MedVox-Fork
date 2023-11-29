@@ -4,7 +4,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" /> // para el estilo app de movil
 
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faMicrophone, faPaperPlane, faCalendarAlt, faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useRef, useState, useReducer, ChangeEvent } from "react";
 import styles from "./page.module.css";
 
@@ -105,15 +106,15 @@ export default function Home() {
       </div>
 
       <button className={styles.boton1} onClick={handleClick}>
-        MI CALENDARIO
+      <FontAwesomeIcon icon={faCalendarAlt} /> MI CALENDARIO
       </button>
 
       <button className={styles.boton1} onClick={handleClick}>
-        FARMACOPEDIA
+      <FontAwesomeIcon icon={faBookOpen} /> FARMACOPEDIA
       </button>
 
       <button className={styles.boton1} onClick={handleClick}>
-        ENVIAR
+      <FontAwesomeIcon icon={faPaperPlane} /> ENVIAR
       </button>
 
       <button
@@ -121,7 +122,7 @@ export default function Home() {
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
       >
-        GRABAR
+        <FontAwesomeIcon icon={faMicrophone} /> GRABAR
       </button>
       {recording && <div>Escuchando...</div>}
     </main>

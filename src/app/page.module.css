@@ -7,15 +7,16 @@
   justify-content: center;
   height: 100vh;
   padding: 20px;
-  background-color: #ffffff;
+  background: linear-gradient(to bottom, #8e44ad, #ff6b81);
 }
 
 .boton1 {
   margin-top: 10px;
-  margin-bottom: 10px; /* Agregado: Margen inferior para separar los botones */
+  margin-bottom: 20px;
+  margin-right: 20px;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: #c096f8;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -28,9 +29,8 @@
 }
 
 .title {
-  color: rgb(136, 24, 216); /* Color del texto */
-  font-size: 1em; /* Tamaño del texto */
-  /* Agrega cualquier otra propiedad de estilo que desees */
+  color: rgb(103, 70, 126);
+  font-size: 1em;
 }
 
 @media only screen and (max-width: 600px) {
