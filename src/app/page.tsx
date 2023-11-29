@@ -1,5 +1,10 @@
 "use client";
 
+// use client
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /> // para el estilo app de movil
+
+
 import { useEffect, useRef, useState, useReducer, ChangeEvent } from "react";
 import styles from "./page.module.css";
 
@@ -63,27 +68,59 @@ export default function Home() {
   }, []);
 
   return (
-    <main className={styles.main}>
-      <input
-        value={fields.medicamento}
-        onChange={handleChange("medicamento")}
-      />
-      <input
-        value={fields.frecuencia_horas}
-        onChange={handleChange("frecuencia_horas")}
-      />
-      <input
-        value={fields.duracion_dias}
-        onChange={handleChange("duracion_dias")}
-      />
-      <input
-        value={fields.primera_dosis}
-        onChange={handleChange("primera_dosis")}
-      />
+    <main className={styles.title}>
+      <h1>MedVox: tu calendario de medicamentos digital</h1>
 
-      <button onClick={handleClick}>ENVIAR</button>
+      <div>
+        <label>Medicamento:</label>
+        <input
+          value={fields.medicamento}
+          onChange={handleChange("medicamento")}
+          placeholder="Ingrese el nombre del medicamento "
+        />
+      </div>
+      <div>
+        <label>Frecuencia (horas):</label>
+        <input
+          value={fields.frecuencia_horas}
+          onChange={handleChange("frecuencia_horas")}
+          placeholder="Ingrese la frecuencia en horas "
+        />
+      </div>
+      <div>
+        <label>Duración (días):</label>
+        <input
+          value={fields.duracion_dias}
+          onChange={handleChange("duracion_dias")}
+          placeholder="Ingrese la duración en días "
+        />
+      </div>
+      <div>
+        <label>Primera dosis:</label>
+        <input
+          value={fields.primera_dosis}
+          onChange={handleChange("primera_dosis")}
+          placeholder="Ingrese la hora de la primera dosis "
+        />
+      </div>
 
-      <button onPointerDown={handlePointerDown} onPointerUp={handlePointerUp}>
+      <button className={styles.boton1} onClick={handleClick}>
+        MI CALENDARIO
+      </button>
+
+      <button className={styles.boton1} onClick={handleClick}>
+        FARMACOPEDIA
+      </button>
+
+      <button className={styles.boton1} onClick={handleClick}>
+        ENVIAR
+      </button>
+
+      <button
+        className={styles.boton1}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+      >
         GRABAR
       </button>
       {recording && <div>Escuchando...</div>}

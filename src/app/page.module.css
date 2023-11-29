@@ -1,8 +1,48 @@
+/* page.module.css */
+
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #ffffff;
 }
 
+.boton1 {
+  margin-top: 10px;
+  margin-bottom: 10px; /* Agregado: Margen inferior para separar los botones */
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.boton1:hover {
+  background-color: #ffffff;
+}
+
+.title {
+  color: rgb(136, 24, 216); /* Color del texto */
+  font-size: 1em; /* Tamaño del texto */
+  /* Agrega cualquier otra propiedad de estilo que desees */
+}
+
+@media only screen and (max-width: 600px) {
+  .main {
+    padding: 10px;
+  }
+
+  .boton1 {
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 1.5em;
+  }
+}
