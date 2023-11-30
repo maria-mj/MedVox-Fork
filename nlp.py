@@ -113,7 +113,7 @@ def obtener_datos(medicamentos,horas,dias,palabras_filtradas):
                 #print("Duración encontrada:", duracion, "días")
 
       elif palabra == "primera" and palabras_filtradas[i + 1] == "dosis":
-        pass
+            pass
 
   if duracion == 0:
                 duracion = 30
@@ -132,9 +132,9 @@ palabras_filtradas = tokenizar_texto(texto)
 medicamento,frecuencia,duracion,primera_dosis = obtener_datos(medicamentos,horas,dias,palabras_filtradas)
 
 datos = {"medicamento": medicamento,
-      "frecuencia_horas": frecuencia,
-      "duracion_dias": duracion,
-      "primera_dosis":primera_dosis}
+      "frecuencia": frecuencia,
+      "dias": duracion,
+      "primera_toma":primera_dosis}
 
 # Convertir a JSON y mostrar
 json_data = json.dumps(datos, indent=4, ensure_ascii=False)
