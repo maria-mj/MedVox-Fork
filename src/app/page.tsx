@@ -72,17 +72,25 @@ export default function Home() {
     <main className={styles.title}>
       <h1>MedVox: tu calendario de medicamentos digital</h1>
 
-      <a className={styles.boton1} href="/ingresar_tratamiento">
-      <FontAwesomeIcon icon={faCalendarAlt} /> NUEVO TRATAMIENTO
-      </a>
-      
-      <a className={styles.boton1} href="/calendario">
-      <FontAwesomeIcon icon={faCalendarAlt} /> MI CALENDARIO
-      </a>
+      <div>
+        <a className={styles.boton1} href="/ingresar_tratamiento">
+          NUEVO TRATAMIENTO
+        </a>
+      </div>
 
-      <a className={styles.boton1} href="/farmacopedia">
-      <FontAwesomeIcon icon={faBookOpen} /> FARMACOPEDIA
-      </a>
+      <div>
+        <a className={styles.boton1} href="/calendario">
+          MI CALENDARIO
+        </a>
+      </div>
+
+      <div>
+        <a className={styles.boton1} href="/farmacopedia">
+          {//<FontAwesomeIcon icon={faBookOpen} /> FARMACOPEDIA
+          }
+          FARMACOPEDIA
+        </a>
+      </div>
 
     </main>
   );

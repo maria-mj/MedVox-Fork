@@ -1,22 +1,44 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 
-const date = new Date()
-const firstday = new Date(date.getFullYear(),date.getMonth(),1).getDay()
-const days = Array.from({length: 35}, (_,index) =>  <span className={styles.day} key={index}> {index >= firstday - 1? index - firstday +2:""} </span>)
+const date = new Date();
+const firstday = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+
 export default function Home() {
-  
+  const [render, setRender] = useState(false);
+
+  useEffect(() => setRender(true), []);
+
+  if (!render) {
+    return null;
+  }
+
+  const item = localStorage.getItem("schedule");
+  const schedule = item ? JSON.parse(item) : {};
+
+  const days = Array.from({ length: 35 }, (_, index) => {
+    const day = index - firstday + 2;
+    
+    return (
+      <a href={`/calendario/${day}`} className={`${styles.day} ${day in schedule ? styles.drug : ""}`} key={index}>
+        {" "}
+        {index >= firstday - 1 ? day : ""}{" "}
+      </a>
+    );
+  });
+
   return (
-        <div className={styles.calendar}> 
-            <span className={styles.day}>L</span>
-            <span className={styles.day}>M</span>
-            <span className={styles.day}>X</span>
-            <span className={styles.day}>J</span>
-            <span className={styles.day}>V</span>
-            <span className={styles.day}>S</span>
-            <span className={styles.day}>D</span>
-            {days}  
-        </div>
+    <div className={styles.calendar}>
+      <span className={styles.header}>L</span>
+      <span className={styles.header}>M</span>
+      <span className={styles.header}>X</span>
+      <span className={styles.header}>J</span>
+      <span className={styles.header}>V</span>
+      <span className={styles.header}>S</span>
+      <span className={styles.header}>D</span>
+      {days}
+    </div>
   );
 }

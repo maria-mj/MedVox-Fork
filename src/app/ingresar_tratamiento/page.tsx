@@ -5,10 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />; // para el estilo app de movil
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMicrophone,
-  faPaperPlane,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMicrophone, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState, useReducer, ChangeEvent } from "react";
 import styles from "./page.module.css";
 
@@ -41,11 +38,36 @@ export default function Home() {
     recorder.current = new MediaRecorder(stream.current as MediaStream);
     recorder.current.ondataavailable = (event) => chunks.push(event.data);
 
-    recorder.current.onstop = () => {
+    recorder.current.onstop = async () => {
       const data = new FormData();
       data.append("file", new Blob(chunks, { type: "audio/ogg" }));
+      const response = await fetch("/api/listen", {
+        method: "POST",
+        body: data,
+      });
 
-      fetch("/api/listen", { method: "POST", body: data });
+      const currentScheduleItem = localStorage.getItem("schedule");
+      const currentSchedule = currentScheduleItem
+        ? JSON.parse(currentScheduleItem)
+        : {};
+
+      const drugs = Object.entries<string[]>(await response.json()).reduce<
+        Record<number, { drug: string; time: string }[]>
+      >((acc, [drug, doses]) => {
+        doses.forEach((dose) => {
+          const day = new Date(dose).getDate();
+
+          if (!acc[day]) {
+            acc[day] = [];
+          }
+
+          acc[day].push({ drug, time: dose });
+        });
+
+        return acc;
+      }, currentSchedule);
+
+      localStorage.setItem("schedule", JSON.stringify(drugs));
     };
 
     recorder.current.start();
@@ -61,8 +83,11 @@ export default function Home() {
       setFields({ [field]: event.currentTarget.value });
     };
 
-  const handleClick = () => {
-    fetch("/api/send", { method: "POST", body: JSON.stringify(fields) });
+  const handleClick = async () => {
+    const response = await fetch("/api/send", {
+      method: "POST",
+      body: JSON.stringify(fields),
+    });
   };
 
   useEffect(() => {

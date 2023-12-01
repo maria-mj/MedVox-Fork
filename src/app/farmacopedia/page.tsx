@@ -7,7 +7,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMicrophone,
-  faPaperPlane,
 
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState, useReducer, ChangeEvent } from "react";
@@ -75,12 +74,12 @@ export default function Home() {
         <input
           value={fields.medicamento}
           onChange={handleChange("medicamento")}
-          placeholder="Ingrese su pregunta... "
+          placeholder="Ingrese su consulta... "
         />
       </div>
 
       <button className={styles.boton1} onClick={handleClick}>
-        <FontAwesomeIcon icon={faPaperPlane} /> CONSULTAR
+        ENVIAR CONSULTA
       </button>
 
       <button
@@ -91,14 +90,18 @@ export default function Home() {
         <FontAwesomeIcon icon={faMicrophone} />
       </button>
 
-      <a className={styles.boton1} href="/preguntas_frecuentes">
+      <div>
+      <a className={styles.boton1} href="/farmacopedia/preguntas_frecuentes">
       PREGUNTAS FRECUENTES
       </a>
-      
-      <a className={styles.boton1} href="/listado_medicamentos">
+      </div>
+
+      <div>
+      <a className={styles.boton1} href="/farmacopedia/listado_medicamentos">
       MEDICAMENTOS DE CONSULTANTES
       </a>
-
+      </div>
+      
       {recording && <div>Escuchando...</div>}
 
     </main>

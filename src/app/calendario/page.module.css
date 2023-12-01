@@ -1,10 +1,31 @@
 .calendar {
-    display: inline-grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    background-color: #eeeeee; /* Cambia el color de fondo a tu preferencia */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0.1rem;
+  background-color: rgb(161, 195, 202);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  max-width: 700px;
 }
 
-.day{
-    padding: 0.5rem
+.day {
+    all: unset;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+    aspect-ratio: 1;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drug {
+  background: rgb(249, 116, 244);
+  cursor: pointer;
 }
