@@ -2,16 +2,10 @@
 
 // use client
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />; // para el estilo app de movil
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /> // para el estilo app de movil
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faMicrophone,
-  faPaperPlane,
-  faCalendarAlt,
-  faBookOpen,
-} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt, faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useRef, useState, useReducer, ChangeEvent } from "react";
 import styles from "./page.module.css";
 
@@ -78,59 +72,18 @@ export default function Home() {
     <main className={styles.title}>
       <h1>MedVox: tu calendario de medicamentos digital</h1>
 
-      <div>
-        <label>Medicamento:</label>
-        <input
-          value={fields.medicamento}
-          onChange={handleChange("medicamento")}
-          placeholder="Ingrese el nombre del medicamento "
-        />
-      </div>
-      <div>
-        <label>Frecuencia (horas):</label>
-        <input
-          value={fields.frecuencia_horas}
-          onChange={handleChange("frecuencia_horas")}
-          placeholder="Ingrese la frecuencia en horas "
-        />
-      </div>
-      <div>
-        <label>Duración (días):</label>
-        <input
-          value={fields.duracion_dias}
-          onChange={handleChange("duracion_dias")}
-          placeholder="Ingrese la duración en días "
-        />
-      </div>
-      <div>
-        <label>Primera dosis:</label>
-        <input
-          value={fields.primera_dosis}
-          onChange={handleChange("primera_dosis")}
-          placeholder="Ingrese la hora de la primera dosis "
-        />
-      </div>
-
+      <a className={styles.boton1} href="/ingresar_tratamiento">
+      <FontAwesomeIcon icon={faCalendarAlt} /> NUEVO TRATAMIENTO
+      </a>
+      
       <a className={styles.boton1} href="/calendario">
-        <FontAwesomeIcon icon={faCalendarAlt} /> MI CALENDARIO
+      <FontAwesomeIcon icon={faCalendarAlt} /> MI CALENDARIO
       </a>
 
       <a className={styles.boton1} href="/farmacopedia">
-        <FontAwesomeIcon icon={faBookOpen} /> FARMACOPEDIA
+      <FontAwesomeIcon icon={faBookOpen} /> FARMACOPEDIA
       </a>
 
-      <button className={styles.boton1} onClick={handleClick}>
-        <FontAwesomeIcon icon={faPaperPlane} /> ENVIAR
-      </button>
-
-      <button
-        className={styles.boton1}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-      >
-        <FontAwesomeIcon icon={faMicrophone} /> GRABAR
-      </button>
-      {recording && <div>Escuchando...</div>}
     </main>
   );
 }
