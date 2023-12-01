@@ -2,10 +2,16 @@
 
 // use client
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" /> // para el estilo app de movil
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />; // para el estilo app de movil
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faMicrophone, faPaperPlane, faCalendarAlt, faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheck,
+  faMicrophone,
+  faPaperPlane,
+  faCalendarAlt,
+  faBookOpen,
+} from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState, useReducer, ChangeEvent } from "react";
 import styles from "./page.module.css";
 
@@ -105,16 +111,16 @@ export default function Home() {
         />
       </div>
 
-      <button className={styles.boton1} onClick={handleClick}>
-      <FontAwesomeIcon icon={faCalendarAlt} /> MI CALENDARIO
-      </button>
+      <a className={styles.boton1} href="/calendario">
+        <FontAwesomeIcon icon={faCalendarAlt} /> MI CALENDARIO
+      </a>
+
+      <a className={styles.boton1} href="/farmacopedia">
+        <FontAwesomeIcon icon={faBookOpen} /> FARMACOPEDIA
+      </a>
 
       <button className={styles.boton1} onClick={handleClick}>
-      <FontAwesomeIcon icon={faBookOpen} /> FARMACOPEDIA
-      </button>
-
-      <button className={styles.boton1} onClick={handleClick}>
-      <FontAwesomeIcon icon={faPaperPlane} /> ENVIAR
+        <FontAwesomeIcon icon={faPaperPlane} /> ENVIAR
       </button>
 
       <button

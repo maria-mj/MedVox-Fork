@@ -27,16 +27,17 @@ export const POST = async (request: Request) => {
     return new Response("No output from nlp.py");
   }
   const drugInfo = JSON.parse(jsonText.toString());
-  console.log("Generated JSON:", drugInfo);
+  //console.log("Generated JSON:", drugInfo);
 
   const {
-      output: [, jsonCalendar],
-    } = spawnSync("python3", ["funcion_calendario.py", jsonText]);
-    
-    if (!jsonCalendar || typeof jsonCalendar !== 'string') {
-      return new Response("Invalid or empty output from funcion_calendario.py");
-    }
-    const calendarInfo = JSON.parse(jsonCalendar);
-    console.log("Generated JSON:", calendarInfo);
-    return new Response(JSON.stringify(calendarInfo));
+    output: [, jsonCalendar],
+  } = spawnSync("python3", ["funcion_calendario.py", jsonText.toString()]);
+
+  if (!jsonCalendar) {
+    return new Response("Invalid or empty output from funcion_calendario.py");
+  }
+  console.log(jsonCalendar.toString());
+  const calendarInfo = JSON.parse(jsonCalendar.toString());
+  console.log("Generated JSON:", jsonCalendar.toString());
+  return new Response(JSON.stringify(calendarInfo));
 };

@@ -53,7 +53,7 @@ def add_to_calendar(json_input, calendario):
         # Antes de guardar la fecha con formato datetime(aaaa, MM, dd, hh, mm), 
          # pasarla a formato TIMESTAMP: string 'aaaa-MM-ddTHH:mm:ss'
 
-        fecha_T = fecha.strftime('%Y-%m-%dT%H:%M:%S')
+        fecha_T = fecha.strftime("%Y-%m-%dT%H:%M:%S.000Z")
         # NOTA: he visto que la T se pone para separar fecha/hora, pero se puede quitar!!
         lista_fechas.append(fecha_T)
 
@@ -71,9 +71,10 @@ calendario = {}
 #json3 = json.dumps({'medicamento':'amoxicilina', 'frecuencia':'12', 'dias':'2', 'primera_toma':'10:30'}, indent=4, ensure_ascii=False)
 
 json_input = sys.argv[1]
-#result_date = json.dumps(add_to_calendar(json_input, calendario), indent=4, ensure_ascii=False)
+#result_date = json.dumps(calendario, indent=4, ensure_ascii=False)
 add_to_calendar(json_input, calendario)
-print(calendario)
+print(json.dumps(calendario, indent=4, ensure_ascii=False))
+#result_date = json.dumps(calendario, indent=4, ensure_ascii=False)
 
 #add_to_calendar(json2, calendario)
 #add_to_calendar(json3, calendario)
