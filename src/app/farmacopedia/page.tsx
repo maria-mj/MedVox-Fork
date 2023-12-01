@@ -74,7 +74,7 @@ export default function Home() {
         <label>¿En qué puedo ayudarle?</label>
         <input
           value={fields.medicamento}
-          onChange={handleChange("En qué puedo ayudarle?")}
+          onChange={handleChange("medicamento")}
           placeholder="Ingrese su pregunta... "
         />
       </div>
@@ -90,7 +90,17 @@ export default function Home() {
       >
         <FontAwesomeIcon icon={faMicrophone} />
       </button>
+
+      <a className={styles.boton1} href="/preguntas_frecuentes">
+      PREGUNTAS FRECUENTES
+      </a>
+      
+      <a className={styles.boton1} href="/listado_medicamentos">
+      MEDICAMENTOS DE CONSULTANTES
+      </a>
+
       {recording && <div>Escuchando...</div>}
+
     </main>
   );
 }

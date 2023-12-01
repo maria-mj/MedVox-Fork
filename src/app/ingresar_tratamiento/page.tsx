@@ -6,11 +6,8 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCheck,
   faMicrophone,
   faPaperPlane,
-  faCalendarAlt,
-  faBookOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState, useReducer, ChangeEvent } from "react";
 import styles from "./page.module.css";
